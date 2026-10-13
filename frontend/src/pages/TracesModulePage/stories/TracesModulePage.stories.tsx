@@ -44,10 +44,10 @@ const openQuickFiltersSettings = async (): Promise<void> => {
 	// flight and is swapped for the enabled one once the check answers, so it is
 	// looked up again on every attempt; a click on the disabled one is dropped in
 	// silence.
-	const control = await waitFor(() => {
+	const control = await waitFor(async () => {
 		const settings = screen.getByTestId('settings-icon-container');
 
-		expect(settings).not.toHaveAttribute('aria-disabled', 'true');
+		await expect(settings).not.toHaveAttribute('aria-disabled', 'true');
 
 		return settings;
 	}, untilLoaded);

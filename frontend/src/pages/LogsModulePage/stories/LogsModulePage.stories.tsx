@@ -46,10 +46,10 @@ const openQuickFiltersSettings = async (): Promise<void> => {
 	// flight and is swapped for the enabled one once the check answers, so it is
 	// looked up again on every attempt; a click on the disabled one is dropped in
 	// silence.
-	const control = await waitFor(() => {
+	const control = await waitFor(async () => {
 		const settings = screen.getByTestId('settings-icon-container');
 
-		expect(settings).not.toHaveAttribute('aria-disabled', 'true');
+		await expect(settings).not.toHaveAttribute('aria-disabled', 'true');
 
 		return settings;
 	}, untilLoaded);
@@ -106,7 +106,7 @@ export const RawFormat: Story = {
 	args: { format: 'raw' },
 };
 
-/** The format popover: the format list, the max-lines stepper, and the font-size control. */
+/** The format popover: radios, the max-lines stepper, and the font-size control. */
 export const FormatMenuOpen: Story = {
 	args: { format: 'raw' },
 	play: async ({ canvasElement }): Promise<void> => {
@@ -117,7 +117,7 @@ export const FormatMenuOpen: Story = {
 				untilLoaded,
 			),
 		);
-		await screen.findByTestId('max-lines-per-row', undefined, untilLoaded);
+		await screen.findByTestId('max-lines-per-row-field', undefined, untilLoaded);
 	},
 };
 
