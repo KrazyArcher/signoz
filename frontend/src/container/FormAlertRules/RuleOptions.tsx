@@ -247,7 +247,14 @@ function RuleOptions({
 
 	const renderThresholdRuleOpts = (): JSX.Element => (
 		<Form.Item>
-			<Typography.Text>
+			<Typography
+				variant="paragraph"
+				size="base"
+				weight="regular"
+				color="inherit"
+				as="span"
+				textOverflow="wrap"
+			>
 				{t('text_condition1')}
 				<InlineSelect
 					getPopupContainer={popupContainer}
@@ -258,16 +265,32 @@ function RuleOptions({
 					value={alertDef.condition.selectedQueryName}
 					onChange={onChangeSelectedQueryName}
 				/>
-				<Typography.Text>is</Typography.Text>
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					is
+				</Typography>
 				{renderCompareOps()} {t('text_condition2')} {renderMatchOpts()}{' '}
 				{t('text_condition3')} {renderEvalWindows()}
-			</Typography.Text>
+			</Typography>
 		</Form.Item>
 	);
 
 	const renderPromRuleOptions = (): JSX.Element => (
 		<Form.Item>
-			<Typography.Text>
+			<Typography
+				variant="paragraph"
+				size="base"
+				weight="regular"
+				color="inherit"
+				as="span"
+				textOverflow="wrap"
+			>
 				{t('text_condition1')}
 				<InlineSelect
 					getPopupContainer={popupContainer}
@@ -278,10 +301,19 @@ function RuleOptions({
 					value={alertDef.condition.selectedQueryName}
 					onChange={onChangeSelectedQueryName}
 				/>
-				<Typography.Text>is</Typography.Text>
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					is
+				</Typography>
 				{renderCompareOps()} {t('text_condition2')} {renderMatchOpts()}
 				{t('text_condition3')} {renderPromEvalWindows()}
-			</Typography.Text>
+			</Typography>
 		</Form.Item>
 	);
 
@@ -317,8 +349,17 @@ function RuleOptions({
 
 	const renderAnomalyRuleOpts = (): JSX.Element => (
 		<Form.Item>
-			<Typography.Text className="rule-definition">
-				{t('text_condition1_anomaly')}
+			<div className="rule-definition">
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					{t('text_condition1_anomaly')}
+				</Typography>
 				<InlineSelect
 					getPopupContainer={popupContainer}
 					allowClear
@@ -328,16 +369,83 @@ function RuleOptions({
 					value={alertDef.condition.selectedQueryName}
 					onChange={onChangeSelectedQueryName}
 				/>
-				{t('text_condition3')} {renderEvalWindows()}
-				<Typography.Text>is</Typography.Text>
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					{t('text_condition3')}
+				</Typography>
+				{renderEvalWindows()}
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					is
+				</Typography>
 				{renderDeviationOpts()}
-				<Typography.Text>deviations</Typography.Text>
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					deviations
+				</Typography>
 				{renderCompareOps()}
-				<Typography.Text>the predicted data</Typography.Text>
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					the predicted data
+				</Typography>
 				{renderMatchOpts()}
-				using the {renderAlgorithms()} algorithm with {renderSeasonality()}{' '}
-				seasonality
-			</Typography.Text>
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					using the
+				</Typography>
+				{renderAlgorithms()}
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					algorithm with
+				</Typography>
+				{renderSeasonality()}
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
+					seasonality
+				</Typography>
+			</div>
 		</Form.Item>
 	);
 
@@ -415,7 +523,16 @@ function RuleOptions({
 							<Space direction="vertical" size="large">
 								<VerticalLine>
 									<Space direction="horizontal" align="center">
-										<Typography.Text>{t('text_alert_frequency')}</Typography.Text>
+										<Typography
+											variant="paragraph"
+											size="base"
+											weight="regular"
+											color="inherit"
+											as="span"
+											textOverflow="wrap"
+										>
+											{t('text_alert_frequency')}
+										</Typography>
 										{renderFrequency()}
 									</Space>
 								</VerticalLine>
@@ -436,7 +553,16 @@ function RuleOptions({
 												}}
 											/>
 										</Form.Item>
-										<Typography.Text>{t('text_alert_on_absent')}</Typography.Text>
+										<Typography
+											variant="paragraph"
+											size="base"
+											weight="regular"
+											color="inherit"
+											as="span"
+											textOverflow="wrap"
+										>
+											{t('text_alert_on_absent')}
+										</Typography>
 
 										<Form.Item
 											noStyle
@@ -461,7 +587,16 @@ function RuleOptions({
 												}}
 											/>
 										</Form.Item>
-										<Typography.Text>{t('text_for')}</Typography.Text>
+										<Typography
+											variant="paragraph"
+											size="base"
+											weight="regular"
+											color="inherit"
+											as="span"
+											textOverflow="wrap"
+										>
+											{t('text_for')}
+										</Typography>
 									</Space>
 								</VerticalLine>
 
@@ -481,7 +616,16 @@ function RuleOptions({
 												}}
 											/>
 										</Form.Item>
-										<Typography.Text>{t('text_require_min_points')}</Typography.Text>
+										<Typography
+											variant="paragraph"
+											size="base"
+											weight="regular"
+											color="inherit"
+											as="span"
+											textOverflow="wrap"
+										>
+											{t('text_require_min_points')}
+										</Typography>
 
 										<Form.Item
 											noStyle
@@ -506,7 +650,16 @@ function RuleOptions({
 												}}
 											/>
 										</Form.Item>
-										<Typography.Text>{t('text_num_points')}</Typography.Text>
+										<Typography
+											variant="paragraph"
+											size="base"
+											weight="regular"
+											color="inherit"
+											as="span"
+											textOverflow="wrap"
+										>
+											{t('text_num_points')}
+										</Typography>
 									</Space>
 								</VerticalLine>
 							</Space>

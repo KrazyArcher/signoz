@@ -1,5 +1,4 @@
 import { Button, Card, Col, Form, Input, Select } from 'antd';
-import { Typography } from '@signozhq/ui/typography';
 import styled from 'styled-components';
 
 const { TextArea } = Input;
@@ -92,10 +91,6 @@ export const TextareaMedium = styled(TextArea)`
 
 export const FormItemMedium = styled(Item)`
 	width: 70%;
-`;
-
-export const ChannelSelectTip = styled(Typography.Text)`
-	color: hsla(0, 0%, 100%, 0.3);
 `;
 
 export const StepContainer = styled.div`

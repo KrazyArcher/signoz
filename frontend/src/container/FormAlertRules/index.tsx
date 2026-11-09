@@ -848,7 +848,17 @@ function FormAlertRules({
 			>
 				<div className="overview-header">
 					<div className="alert-type-container">
-						<Typography.Title level={5} className="alert-type-title">
+						<Typography
+							variant="paragraph"
+							size="medium"
+							weight="bold"
+							color="inherit"
+							as="h5"
+							display="flex"
+							gap={4}
+							marginY={4}
+							textOverflow="wrap"
+						>
 							<BellDot size={14} />
 
 							{alertDef.alertType === AlertTypes.ANOMALY_BASED_ALERT &&
@@ -861,7 +871,7 @@ function FormAlertRules({
 								'Traces Based Alert'}
 							{alertDef.alertType === AlertTypes.EXCEPTIONS_BASED_ALERT &&
 								'Exceptions Based Alert'}
-						</Typography.Title>
+						</Typography>
 					</div>
 
 					<Button
@@ -1007,11 +1017,18 @@ function FormAlertRules({
 				}}
 				onCancel={() => setIsConfirmSaveOpen(false)}
 			>
-				<Typography.Text>
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="regular"
+					color="inherit"
+					as="span"
+					textOverflow="wrap"
+				>
 					{t('confirm_save_content_part1')}{' '}
 					<QueryTypeTag queryType={currentQuery.queryType} />{' '}
 					{t('confirm_save_content_part2')}
-				</Typography.Text>
+				</Typography>
 			</AlertDialog>
 		</>
 	);

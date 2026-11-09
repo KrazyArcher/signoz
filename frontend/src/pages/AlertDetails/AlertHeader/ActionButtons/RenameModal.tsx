@@ -80,7 +80,16 @@ function RenameModal({
 			}
 		>
 			<div className="alert-content">
-				<Typography.Text className="name-text">Enter a new name</Typography.Text>
+				<Typography
+					variant="paragraph"
+					size="base"
+					weight="medium"
+					color="main"
+					as="span"
+					textOverflow="wrap"
+				>
+					Enter a new name
+				</Typography>
 				<Input
 					ref={inputRef}
 					data-testid="alert-name"
