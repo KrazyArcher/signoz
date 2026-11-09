@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { useAppLocation } from 'lib/router/useAppLocation';
 import { BellDot, CircleAlert, ExternalLink, Save } from '@signozhq/icons';
 import { Button, FormInstance, SelectProps } from 'antd';
-import { ConfirmDialog } from '@signozhq/ui/dialog';
+import { AlertDialog } from '@signozhq/ui/alert-dialog';
 import { Typography } from '@signozhq/ui/typography';
 import logEvent from 'api/common/logEvent';
 import { convertToApiError } from 'api/ErrorResponseHandlerForGeneratedAPIs';
@@ -994,27 +994,25 @@ function FormAlertRules({
 				</MainFormContainer>
 			</div>
 
-			<ConfirmDialog
+			<AlertDialog
 				testId="alert-save-confirm-dialog"
 				open={isConfirmSaveOpen}
-				onOpenChange={setIsConfirmSaveOpen}
 				title={t('confirm_save_title')}
 				titleIcon={<CircleAlert size={14} />}
 				confirmText="OK"
-				confirmColor="primary"
-				onConfirm={async (): Promise<boolean> => {
+				color="primary"
+				onConfirm={async (): Promise<void> => {
 					await saveRule();
-					return true;
+					setIsConfirmSaveOpen(false);
 				}}
 				onCancel={() => setIsConfirmSaveOpen(false)}
-				width="narrow"
 			>
 				<Typography.Text>
 					{t('confirm_save_content_part1')}{' '}
 					<QueryTypeTag queryType={currentQuery.queryType} />{' '}
 					{t('confirm_save_content_part2')}
 				</Typography.Text>
-			</ConfirmDialog>
+			</AlertDialog>
 		</>
 	);
 }
