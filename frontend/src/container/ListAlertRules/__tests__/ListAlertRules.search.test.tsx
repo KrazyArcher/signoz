@@ -136,8 +136,9 @@ describe('ListAlertRules — search', () => {
 		await screen.findByText('High CPU Alert');
 
 		await user.click(screen.getByTestId('alert-rules-filter-states'));
-		await user.click(await screen.findByRole('option', { name: 'Firing' }));
-		await user.click(await screen.findByRole('option', { name: 'Disabled' }));
+		const search = await screen.findByTestId('alert-rules-filter-states-search');
+		await user.type(search, 'Firing{Enter}');
+		await user.type(search, 'Disabled{Enter}');
 
 		await waitFor(() => {
 			expect(lastRequest(requests).getAll('states')).toStrictEqual([

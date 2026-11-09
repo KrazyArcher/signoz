@@ -203,7 +203,7 @@ describe('ListAlertRules — saved views rail', () => {
 				screen.queryByTestId('alert-rules-view-save-changes'),
 			).not.toBeInTheDocument();
 			await user.type(
-				await screen.findByTestId('save-alert-rule-view-name'),
+				await screen.findByTestId('save-alert-rule-view-name-field'),
 				'Foo alerts',
 			);
 			await user.click(screen.getByTestId('save-alert-rule-view-confirm'));
@@ -310,7 +310,7 @@ describe('ListAlertRules — saved views rail', () => {
 
 			await user.click(await screen.findByTestId('alert-rules-view-save-as'));
 			await user.type(
-				await screen.findByTestId('save-alert-rule-view-name'),
+				await screen.findByTestId('save-alert-rule-view-name-field'),
 				'My view',
 			);
 			await user.click(screen.getByTestId('save-alert-rule-view-confirm'));
@@ -337,7 +337,7 @@ describe('ListAlertRules — saved views rail', () => {
 			await screen.findByText('High CPU Alert');
 
 			await user.click(screen.getByLabelText('Save current filters as a view'));
-			const input = await screen.findByTestId('save-alert-rule-view-name');
+			const input = await screen.findByTestId('save-alert-rule-view-name-field');
 			await user.type(input, 'x'.repeat(70));
 
 			expect(input).toHaveValue('x'.repeat(64));
@@ -377,7 +377,7 @@ describe('ListAlertRules — saved views rail', () => {
 
 			const row = viewItem('view-1').parentElement as HTMLElement;
 			await user.click(within(row).getByLabelText('Rename view'));
-			const input = await screen.findByTestId('rename-alert-rule-view-name');
+			const input = await screen.findByTestId('rename-alert-rule-view-name-field');
 			expect(input).toHaveValue('Critical firing');
 			await user.clear(input);
 			await user.type(input, 'Renamed');
@@ -532,7 +532,7 @@ describe('ListAlertRules — saved views rail', () => {
 			renderListAlertRules();
 			await screen.findByTestId('alert-rules-view-view-2');
 
-			const search = screen.getByTestId('alert-rules-view-search');
+			const search = screen.getByTestId('alert-rules-view-search-field');
 			await user.type(search, 'infra');
 
 			expect(viewItem('view-2')).toBeInTheDocument();
