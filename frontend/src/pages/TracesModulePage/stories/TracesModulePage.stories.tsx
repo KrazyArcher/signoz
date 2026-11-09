@@ -79,12 +79,19 @@ export const RootSpansNextPage: Story = {
 	args: { view: ExplorerViews.TRACE, spans: 50 },
 	play: async (): Promise<void> => {
 		await userEvent.click(
-			await screen.findByRole('button', { name: 'Go to next page' }, untilLoaded),
+			await screen.findByTestId(
+				'traces-table-trace-pagination-next',
+				undefined,
+				untilLoaded,
+			),
 		);
-		const pager = screen.getByLabelText('pagination');
 
 		await expect(
-			await within(pager).findByText('3', undefined, untilLoaded),
+			await screen.findByTestId(
+				'traces-table-trace-pagination-page-3',
+				undefined,
+				untilLoaded,
+			),
 		).toBeVisible();
 	},
 };
