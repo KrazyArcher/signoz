@@ -38,12 +38,10 @@ function findLinkForAlertType(
 	return link as HTMLElement;
 }
 
-function clickLinkAndVerifyRedirect(
-	link: HTMLElement,
-	expectedUrl: string,
-): void {
-	fireEvent.click(link);
-	expect(mockWindowOpen).toHaveBeenCalledWith(expectedUrl, '_blank');
+function verifyLinkTarget(link: HTMLElement, expectedUrl: string): void {
+	const anchor = link.closest('a');
+	expect(anchor).toHaveAttribute('href', expectedUrl);
+	expect(anchor).toHaveAttribute('target', '_blank');
 }
 describe('Alert rule documentation redirection', () => {
 	let renderResult: ReturnType<typeof render>;
@@ -85,7 +83,7 @@ describe('Alert rule documentation redirection', () => {
 		expect(clickHereLinks).toHaveLength(5);
 	});
 
-	it('should redirect to correct documentation for each alert type', () => {
+	it('should link each alert type to its documentation in a new tab', () => {
 		const { getAllByText } = renderResult;
 
 		const clickHereLinks = getAllByText(
@@ -99,10 +97,8 @@ describe('Alert rule documentation redirection', () => {
 			const linkForAlertType = findLinkForAlertType(clickHereLinks, alertType);
 			const expectedUrl = ALERT_TYPE_URL_MAP[alertType];
 
-			clickLinkAndVerifyRedirect(linkForAlertType, expectedUrl.selection);
+			verifyLinkTarget(linkForAlertType, expectedUrl.selection);
 		});
-
-		expect(mockWindowOpen).toHaveBeenCalledTimes(alertTypeCount);
 	});
 });
 
