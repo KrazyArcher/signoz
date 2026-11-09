@@ -155,13 +155,19 @@ function LabelSelect({
 							<QueryChipContainer key={query.key}>
 								{isClosable ? (
 									<Pill.Closeable
+										maxWidth="100%"
 										closeAriaLabel={`Remove ${query.key}`}
 										onClose={(): void => handleClose(query.key)}
 									>
 										{query.key}: {query.value}
 									</Pill.Closeable>
 								) : (
-									<Badge textTransform="none" variant="solid" color="secondary">
+									<Badge
+										textTransform="none"
+										variant="solid"
+										color="secondary"
+										maxWidth="100%"
+									>
 										{query.key}: {query.value}
 									</Badge>
 								)}

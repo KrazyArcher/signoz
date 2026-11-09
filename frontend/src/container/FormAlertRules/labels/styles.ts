@@ -36,6 +36,7 @@ export const QueryChipItem = styled(Badge).attrs({
 	color: 'secondary' as const,
 	variant: 'solid' as const,
 	textTransform: 'none' as const,
+	maxWidth: '100%',
 })`
 	margin-right: 0.1rem;
 `;
