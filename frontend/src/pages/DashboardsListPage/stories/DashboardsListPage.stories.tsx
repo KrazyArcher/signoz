@@ -23,6 +23,7 @@ import {
 	openEditTagsDialog,
 	openFirstRowActions,
 	openRenameDialog,
+	openRenameViewDialog,
 	openSaveViewDialog,
 	openTemplateTab,
 	pinFails,
@@ -147,6 +148,11 @@ export const EditTagsDialog: Story = {
 /** The dialog that names the current filters as a new saved view. */
 export const SaveViewDialog: Story = {
 	play: openSaveViewDialog,
+};
+
+/** A saved view's rename dialog, opened from its row. */
+export const RenameViewDialog: Story = {
+	play: openRenameViewDialog,
 };
 
 /** The renamed toast, raised once the PATCH answers. */

@@ -46,7 +46,7 @@ export const openSaveViewDialog = async ({
 	await screen.findByText('Save as view');
 };
 
-export const openRenameViewPopover = async ({
+export const openRenameViewDialog = async ({
 	canvasElement,
 }: PlayContext): Promise<void> => {
 	await hoverActions.click(
@@ -56,7 +56,7 @@ export const openRenameViewPopover = async ({
 			untilLoaded,
 		),
 	);
-	await screen.findByText('Rename view');
+	await screen.findByRole('dialog', { name: 'Rename view' });
 };
 
 export const openDeleteViewConfirm = async ({
