@@ -5,6 +5,7 @@
 
 import { expect, screen, userEvent, within } from 'storybook/test';
 
+import { findToastText } from '@/storybook/play/toastText';
 import type { PageStoryArgs } from '@/storybook/runtime/resolveStory';
 
 import {
@@ -218,11 +219,9 @@ export const pinPastLimit = async ({
 			{ timeout: TOAST_TIMEOUT },
 		),
 	);
-	await screen.findByText(
-		/You can pin up to 10 dashboards/,
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText(/You can pin up to 10 dashboards/, {
+		timeout: TOAST_TIMEOUT,
+	});
 };
 
 export const pinFails = async ({
@@ -235,11 +234,7 @@ export const pinFails = async ({
 			{ timeout: TOAST_TIMEOUT },
 		),
 	);
-	await screen.findByText(
-		'Failed to pin dashboard.',
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText('Failed to pin dashboard.', { timeout: TOAST_TIMEOUT });
 };
 
 export const unpinFails = async ({
@@ -252,11 +247,7 @@ export const unpinFails = async ({
 			{ timeout: TOAST_TIMEOUT },
 		),
 	);
-	await screen.findByText(
-		'Failed to unpin dashboard.',
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText('Failed to unpin dashboard.', { timeout: TOAST_TIMEOUT });
 };
 
 export const copyLegacyDashboardId = async ({
@@ -285,11 +276,7 @@ export const migrationFails = async ({
 	canvasElement,
 }: PlayContext): Promise<void> => {
 	await retryMigration(canvasElement);
-	await screen.findByText(
-		'Something went wrong',
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText('Something went wrong', { timeout: TOAST_TIMEOUT });
 };
 
 export const createDashboardFails = async ({
@@ -325,11 +312,7 @@ export const importInvalidImage = async ({
 		image: 'https://example.com/logo.png',
 		spec: { display: { name: 'Imported' }, ...IMPORTED_SPEC },
 	});
-	await screen.findByText(
-		/Dashboard "image" must be/,
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText(/Dashboard "image" must be/, { timeout: TOAST_TIMEOUT });
 };
 
 export const importCreateFails = async ({
@@ -368,18 +351,14 @@ export const templateRequestFails = async ({
 	canvasElement,
 }: PlayContext): Promise<void> => {
 	await requestTemplate(canvasElement);
-	await screen.findByText('Event rejected', {}, { timeout: TOAST_TIMEOUT });
+	await findToastText('Event rejected', { timeout: TOAST_TIMEOUT });
 };
 
 export const templateRequestRejected = async ({
 	canvasElement,
 }: PlayContext): Promise<void> => {
 	await requestTemplate(canvasElement);
-	await screen.findByText(
-		'Something went wrong',
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText('Something went wrong', { timeout: TOAST_TIMEOUT });
 };
 
 export const saveViewFails = async ({
@@ -397,11 +376,7 @@ export const saveViewFails = async ({
 		'On-call',
 	);
 	await userEvent.click(await screen.findByTestId('save-view-confirm'));
-	await screen.findByText(
-		'Failed to save view.',
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText('Failed to save view.', { timeout: TOAST_TIMEOUT });
 };
 
 export const renameViewFails = async ({
@@ -420,11 +395,7 @@ export const renameViewFails = async ({
 	await userEvent.clear(input);
 	await userEvent.type(input, 'Renamed view');
 	await userEvent.click(await screen.findByTestId('rename-view-confirm'));
-	await screen.findByText(
-		'Failed to update view.',
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText('Failed to update view.', { timeout: TOAST_TIMEOUT });
 };
 
 export const deleteViewFails = async ({
@@ -442,9 +413,5 @@ export const deleteViewFails = async ({
 	await userEvent.click(
 		await within(dialog).findByRole('button', { name: 'Delete' }),
 	);
-	await screen.findByText(
-		'Failed to delete view.',
-		{},
-		{ timeout: TOAST_TIMEOUT },
-	);
+	await findToastText('Failed to delete view.', { timeout: TOAST_TIMEOUT });
 };
