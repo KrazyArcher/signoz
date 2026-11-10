@@ -33,7 +33,7 @@ export const openQuerySuggestions = async ({
 	await screen.findByText('labels.team');
 };
 
-export const openSaveViewPopover = async ({
+export const openSaveViewDialog = async ({
 	canvasElement,
 }: PlayContext): Promise<void> => {
 	await userEvent.click(

@@ -93,7 +93,7 @@ export const openEditTagsDialog = async ({
 	await screen.findByRole('dialog', { name: /^(Edit|Add) tags$/ });
 };
 
-export const openSaveViewPopover = async ({
+export const openSaveViewDialog = async ({
 	canvasElement,
 }: PlayContext): Promise<void> => {
 	await userEvent.click(
@@ -378,7 +378,10 @@ export const saveViewFails = async ({
 			{ timeout: TOAST_TIMEOUT },
 		),
 	);
-	await userEvent.type(await screen.findByTestId('save-view-name-field'), 'On-call');
+	await userEvent.type(
+		await screen.findByTestId('save-view-name-field'),
+		'On-call',
+	);
 	await userEvent.click(await screen.findByTestId('save-view-confirm'));
 	await screen.findByText(
 		'Failed to save view.',
